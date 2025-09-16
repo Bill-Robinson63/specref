@@ -1,16 +1,14 @@
 components:
-- components: []
-  layout_properties: {slot: nav-right}
-  name: navbar_links
-  properties: {}
-  type: FlowPanel
-- components: []
-  event_bindings: {click: link_1_click}
+- event_bindings: {reset: canvas_1_reset}
   layout_properties: {slot: default}
+  name: canvas_1
+  properties: {background: Black, height: 116.58334350585938}
+  type: Canvas
+- layout_properties: {slot: nav-right}
   name: link_1
-  properties: {align: center, background: '', bold: true, font: Consolas, font_size: 20, foreground: Blue, italic: true, spacing_above: small, text: Donate, underline: false, url: 'https://buy.stripe.com/4gM9AS1xb5MEa6ucpZbbG00', visible: true}
+  properties: {align: center, background: Black, foreground: Blue, text: Donate, url: 'https://buy.stripe.com/4gM9AS1xb5MEa6ucpZbbG00'}
   type: Link
 container:
-  properties: {html: '@theme:standard-page.html', visible: true}
+  properties: {foreground: Blue, html: '@theme:standard-page.html', visible: true}
   type: HtmlTemplate
 is_package: true

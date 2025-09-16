@@ -8,4 +8,4 @@ class Form1(Form1Template):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
 
-    self.waveColor[[]]
+    

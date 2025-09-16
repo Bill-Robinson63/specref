@@ -1,13 +1,15 @@
 components:
 - components: []
-  layout_properties: {slot: default}
-  name: content_panel
-  properties: {col_widths: '{}'}
-  type: ColumnPanel
-- layout_properties: {slot: nav-right}
+  layout_properties: {slot: nav-right}
   name: navbar_links
   properties: {}
   type: FlowPanel
+- components: []
+  event_bindings: {click: link_1_click}
+  layout_properties: {slot: default}
+  name: link_1
+  properties: {align: center, background: '', bold: true, font: Consolas, font_size: 20, foreground: Blue, italic: true, spacing_above: small, text: Donate, underline: false, url: 'https://buy.stripe.com/4gM9AS1xb5MEa6ucpZbbG00', visible: true}
+  type: Link
 container:
   properties: {html: '@theme:standard-page.html', visible: true}
   type: HtmlTemplate

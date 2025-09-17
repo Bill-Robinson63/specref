@@ -8,6 +8,7 @@ class Form1(Form1Template):
     self.init_components(**properties)
     self.canvas_1.reset_context()
 
+    # Let's start off with H_alpha, H_beta, O_III, O_I, S_II, N_II which are said to be most common/prominent for ameture astronomers
     self.spectralLines = {}
     self.spectralLines["H_alpha"] = [[656, "#FF0000"], [486, "#00EFFF"], [434, "#2800FF"], [410, "#7E00DB"]]
 

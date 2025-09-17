@@ -26,6 +26,17 @@ class Form1(Form1Template):
 
   def canvas_1_reset(self, **event_args):
     """This method is called when the canvas is reset and cleared, such as when the window resizes, or the canvas is added to a form."""
+    canWidth = self.canvas_1.get_width()
+    canLength = self.canvas_1.get_height()
+    self.canvas_1.begin_path()
+    self.canvas_1.move_to(0, 0)
+    self.canvas_1.line_to(canWidth, 0)
+    self.canvas_1.line_to(canWidth, canLength)
+    self.canvas_1.line_to(0, canLength)
+    self.canvas_1.close_path()
+    self.canvas_1.fill_style = "Black"
+    self.canvas_1.fill()
+    
     if self.H_alpha.checked:
       Form1.displayLine(self, "H_alpha")
 

@@ -11,7 +11,8 @@ class Form1(Form1Template):
     self.spectralLines = {}
     self.spectralLines["H_alpha"] = [[656, "#FF0000"], [486, "#00EFFF"], [434, "#2800FF"], [410, "#7E00DB"]]
 
-  def displayLine(lineKey):
+  def displayLine(self, lineKey):
+    canvas = self.canvas_1
     lineLength = canvas.get_width()
     lineData = self.spectralLines[lineKey]
     for line in lineData:
@@ -23,10 +24,10 @@ class Form1(Form1Template):
       canvas.stroke()
       canvas.close_path()
 
-    def canvas_1_reset(self, **event_args):
-      """This method is called when the canvas is reset and cleared, such as when the window resizes, or the canvas is added to a form."""
-    if self.H_alpha:
-      displayLine("H_alpha")
+  def canvas_1_reset(self, **event_args):
+    """This method is called when the canvas is reset and cleared, such as when the window resizes, or the canvas is added to a form."""
+    if self.H_alpha.checked:
+      Form1.displayLine(self, "H_alpha")
 
   def H_alpha_change(self, **event_args):
     """This method is called when this checkbox is checked or unchecked"""

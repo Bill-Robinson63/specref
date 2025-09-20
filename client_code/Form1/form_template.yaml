@@ -1,23 +1,36 @@
 components:
-- layout_properties: {slot: nav-right}
+- components: []
+  layout_properties: {slot: nav-right}
   name: link_1
   properties: {align: center, background: Black, foreground: Blue, text: Donate, url: 'https://buy.stripe.com/4gM9AS1xb5MEa6ucpZbbG00'}
   type: Link
+- layout_properties: {slot: title}
+  name: text_box_1
+  properties: {align: center, background: Orange, bold: true, font_size: 24, foreground: Black, text: Spectroscopic Reference}
+  type: TextBox
 - components:
-  - event_bindings: {change: H_alpha_change}
-    layout_properties: {grid_position: 'OGSXYN,MTLVYC'}
-    name: H_alpha
-    properties: {text: Hα}
-    type: CheckBox
+  - layout_properties: {grid_position: 'HCFHOK,KTSDSK'}
+    name: canvas_1
+    properties: {background: Black, height: '400'}
+    type: Canvas
   layout_properties: {slot: left-nav}
   name: column_panel_1
-  properties: {col_spacing: small, col_widths: '{"MTLVYC":60}', foreground: Black}
+  properties: {}
   type: ColumnPanel
-- event_bindings: {reset: canvas_1_reset}
+- components:
+  - event_bindings: {change: H_alpha_change}
+    layout_properties: {grid_position: 'SIGMET,NULRTJ'}
+    name: H_alpha
+    properties: {align: left, text: Hα}
+    type: CheckBox
+  - layout_properties: {grid_position: 'GJKFKZ,ETQLLP'}
+    name: check_box_1
+    properties: {text: check_box_1}
+    type: CheckBox
   layout_properties: {slot: default}
-  name: canvas_1
-  properties: {background: Black, height: '400'}
-  type: Canvas
+  name: column_panel_2
+  properties: {background: White, foreground: Green, wrap_on: never}
+  type: ColumnPanel
 container:
   properties: {foreground: Blue, html: '@theme:standard-page.html', visible: true}
   type: HtmlTemplate

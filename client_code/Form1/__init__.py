@@ -19,7 +19,7 @@ class Form1(Form1Template):
 
   def displayLine(self, lineKey):
     canvas = self.canvas_1
-    xRatio = canvas.get_width() / 400
+    xRatio = canvas.get_width() / 370
     lineLength = canvas.get_height()
     line = self.spectralLines[lineKey]
     canvas.begin_path()

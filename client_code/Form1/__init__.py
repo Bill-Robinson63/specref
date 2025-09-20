@@ -19,14 +19,13 @@ class Form1(Form1Template):
 
   def displayLine(self, lineKey):
     canvas = self.canvas_1
-    xRatio = canvas.get_width() / 370
-    lineLength = canvas.get_height()
+    lineLength = canvas.get_width()
     line = self.spectralLines[lineKey]
     canvas.begin_path()
-    canvas.move_to(int((line[0] - 380) * xRatio), 0)
-    canvas.line_to(int((line[0] - 380) * xRatio), lineLength)
+    canvas.move_to(0, line[0] - 380)
+    canvas.line_to(lineLength, line[0] - 380)
     canvas.stroke_style = line[1]
-    canvas.line_width = int(xRatio)
+    canvas.line_width = 1
     canvas.stroke()
     canvas.close_path()
 

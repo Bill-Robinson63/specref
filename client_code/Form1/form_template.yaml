@@ -9,39 +9,39 @@ components:
   properties: {align: center, background: Orange, bold: true, font_size: 24, foreground: Black, text: Spectroscopic Reference}
   type: TextBox
 - components:
-  - layout_properties: {grid_position: 'QUBVCO,QRVDEZ'}
-    name: text_box_2
-    properties: {text: Hydrogen, underline: true}
-    type: TextBox
-  - event_bindings: {change: H_alpha_change}
-    layout_properties: {grid_position: 'NTFYVZ,KTDZZD'}
-    name: H_alpha
-    properties: {align: center, spacing_above: none, spacing_below: none, text: Hα}
-    type: CheckBox
-  - event_bindings: {change: H_beta_change}
-    layout_properties: {grid_position: 'NTFYVZ,IZHLVX'}
-    name: H_beta
-    properties: {align: left, spacing_above: none, spacing_below: none, text: Hβ, underline: false}
-    type: CheckBox
-  - event_bindings: {change: H_gamma_change}
-    layout_properties: {grid_position: 'RLTNKI,SNHBVS'}
-    name: H_gamma
-    properties: {align: center, spacing_above: none, spacing_below: none, text: H γ}
-    type: CheckBox
-  - event_bindings: {change: H_delta_change}
-    layout_properties: {grid_position: 'RLTNKI,ZCNWZS'}
-    name: H_delta
-    properties: {spacing_above: none, spacing_below: none, text: H_δ}
-    type: CheckBox
+  - layout_properties: {grid_position: 'JJQQNC,HAHSIP'}
+    name: canvas_1
+    properties: {background: Black, height: '400'}
+    type: Canvas
   layout_properties: {slot: left-nav}
   name: column_panel_1
   properties: {}
   type: ColumnPanel
 - components:
-  - layout_properties: {grid_position: 'AZSSUI,RCTKBH'}
-    name: canvas_1
-    properties: {background: Black, height: '100'}
-    type: Canvas
+  - layout_properties: {grid_position: 'PCNDRL,IHROBB'}
+    name: text_box_2
+    properties: {background: White, enabled: true, text: Hydrogen, underline: true}
+    type: TextBox
+  - event_bindings: {change: H_alpha_change}
+    layout_properties: {grid_position: 'HRTEVU,ZASTSV'}
+    name: H_alpha
+    properties: {align: left, spacing_above: none, spacing_below: none, text: Hα}
+    type: CheckBox
+  - event_bindings: {change: H_beta_change}
+    layout_properties: {grid_position: 'HRTEVU,EVUCJJ'}
+    name: H_beta
+    properties: {align: left, spacing_above: none, spacing_below: none, text: Hβ, underline: false}
+    type: CheckBox
+  - event_bindings: {change: H_gamma_change}
+    layout_properties: {grid_position: 'HRTEVU,OQNIXY'}
+    name: H_gamma
+    properties: {align: left, spacing_above: none, spacing_below: none, text: H γ}
+    type: CheckBox
+  - event_bindings: {change: H_delta_change}
+    layout_properties: {grid_position: 'HRTEVU,HPFSFE'}
+    name: H_delta
+    properties: {spacing_above: none, spacing_below: none, text: H_δ}
+    type: CheckBox
   layout_properties: {slot: default}
   name: column_panel_2
   properties: {background: White, foreground: Green, wrap_on: never}

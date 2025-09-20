@@ -2,15 +2,17 @@ from ._anvil_designer import Form1Template
 from anvil import *
 import stripe.checkout
 
+# Greek Letters: Α α, Β β, Γ γ, Δ δ, Ε ε, Ζ ζ, Η η, Θ θ, Ι ι, Κ κ, Λ λ, Μ μ, Ν ν, Ξ ξ, Ο ο, Π π, Ρ ρ, Σ σ ς, Τ τ, Υ υ, Φ φ, Χ χ, Ψ ψ, Ω ω
+
 class Form1(Form1Template):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
     self.canvas_1.reset_context()
 
-    # Let's start off with H_alpha, H_beta, O_III, O_I, S_II, N_II which are said to be most common/prominent for ameture astronomers
+    # Let's start off with Hα, Hβ, O_III, O_I, S_II, N_II which are said to be most common/prominent for ameture astronomers
     self.spectralLines = {}
-    self.spectralLines["H_alpha"] = [[656, "#FF0000"], [486, "#00EFFF"], [434, "#2800FF"], [410, "#7E00DB"]]
+    self.spectralLines["Hα"] = [[656, "#FF0000"], [486, "#00EFFF"], [434, "#2800FF"], [410, "#7E00DB"]]
 
   def displayLine(self, lineKey):
     canvas = self.canvas_1
@@ -39,7 +41,7 @@ class Form1(Form1Template):
     self.canvas_1.fill()
     
     if self.H_alpha.checked:
-      Form1.displayLine(self, "H_alpha")
+      Form1.displayLine(self, "Hα")
 
   def H_alpha_change(self, **event_args):
     """This method is called when this checkbox is checked or unchecked"""

@@ -17,7 +17,7 @@ components:
   - event_bindings: {change: H_alpha_change}
     layout_properties: {grid_position: 'DKHMQT,FBXHUS'}
     name: H_alpha
-    properties: {text: H_alpha}
+    properties: {text: Hα}
     type: CheckBox
   layout_properties: {slot: default}
   name: column_panel_2

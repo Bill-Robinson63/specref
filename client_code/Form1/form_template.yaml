@@ -9,14 +9,29 @@ components:
   properties: {align: center, background: Orange, bold: true, font_size: 24, foreground: Black, text: Spectroscopic Reference}
   type: TextBox
 - components:
+  - layout_properties: {grid_position: 'QUBVCO,QRVDEZ'}
+    name: text_box_2
+    properties: {text: Hydrogen, underline: true}
+    type: TextBox
   - event_bindings: {change: H_alpha_change}
     layout_properties: {grid_position: 'NTFYVZ,KTDZZD'}
     name: H_alpha
-    properties: {align: left, text: Hα}
+    properties: {align: center, spacing_above: none, spacing_below: none, text: Hα}
     type: CheckBox
-  - layout_properties: {grid_position: 'TTUQIK,GMCITZ'}
-    name: check_box_1
-    properties: {text: check_box_1}
+  - event_bindings: {change: H_beta_change}
+    layout_properties: {grid_position: 'NTFYVZ,IZHLVX'}
+    name: H_beta
+    properties: {align: left, spacing_above: none, spacing_below: none, text: Hβ, underline: false}
+    type: CheckBox
+  - event_bindings: {change: H_gamma_change}
+    layout_properties: {grid_position: 'RLTNKI,SNHBVS'}
+    name: H_gamma
+    properties: {align: center, spacing_above: none, spacing_below: none, text: H γ}
+    type: CheckBox
+  - event_bindings: {change: H_delta_change}
+    layout_properties: {grid_position: 'RLTNKI,ZCNWZS'}
+    name: H_delta
+    properties: {spacing_above: none, spacing_below: none, text: H_δ}
     type: CheckBox
   layout_properties: {slot: left-nav}
   name: column_panel_1

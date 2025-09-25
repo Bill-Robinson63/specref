@@ -48,9 +48,9 @@ class Form1(Form1Template):
                     '#920000', '#900000', '#8f0000', '#8d0000', '#8c0000', '#8a0000', '#890000', '#870000', '#850000', '#840000',
                     '#820000', '#810000', '#7f0000', '#7d0000', '#7c0000', '#7a0000', '#780000', '#770000', '#750000', '#730000',
                     '#720000', '#700000', '#6e0000', '#6d0000', '#6b0000', '#690000', '#680000', '#660000', '#640000', '#630000',
-                    '#610000', '#000000', '#000000', '#000000', '#000000', '#000000', '#000000', '#000000', '#000000', '#000000',
-                    '#000000', '#000000', '#000000', '#000000', '#000000', '#000000', '#000000', '#000000', '#000000', '#000000',
-                    '#000000', '#000000', '#000000', '#000000', '#000000', '#000000', '#000000', '#000000', '#000000', '#000000']
+                    '#610000', '#600000', '#590000', '#580000', '#570000', '#560000', '#550000', '#540000', '#530000', '#520000',
+                    '#510000', '#500000', '#490000', '#480000', '#470000', '#460000', '#450000', '#440000', '#430000', '#420000',
+                    '#410000', '#400000', '#390000', '#380000', '#370000', '#360000', '#350000', '#340000', '#330000', '#320000']
 
     # Let's start off with Hα, Hβ, O_III, O_I, S_II, N_II which are said to be most common/prominent for ameture astronomers
     self.spectralLines = {}
@@ -66,36 +66,38 @@ class Form1(Form1Template):
     canvas.begin_path()
     canvas.move_to(lineLength, wv - 380)
     canvas.line_to(canvas.get_width(), wv - 380)
-    canvas.stroke_style = self.WvToRGB[wv - 380]
+    if self.absorption.selected:
+      canvas.stroke_style = "Black"
+    else:
+      canvas.stroke_style = self.WvToRGB[wv - 380]
     canvas.line_width = 1
     canvas.stroke()
     canvas.close_path()
     canvas.fill_style = "#FFFFFF"
-    canvas.fill_text("λ=" + str(wv) + " nm  f=" + str(int((self.c_nm / wv) / 1e12)) + " Thz", 2, wv - 380)
+    if self.frequency.selected:
+      canvas.fill_text("   f = " + str(int((self.c_nm / wv) / 1e12)) + " THz", 2, wv - 380)
+    else:
+      canvas.fill_text("   λ = " + str(wv) + " nm", 2, wv - 380)
 
   def canvas_1_reset(self, **event_args):
     """This method is called when the canvas is reset and cleared, such as when the window resizes, or the canvas is added to a form."""
-    canWidth  = self.canvas_1.get_width()
-    canLength = self.canvas_1.get_height()
-    self.canvas_1.begin_path()
-    self.canvas_1.move_to(canWidth/2, 0)
-    self.canvas_1.line_to(canWidth, 0)
-    self.canvas_1.line_to(canWidth, canLength)
-    self.canvas_1.line_to(canwidth/2, canLength)
-    self.canvas_1.close_path()
-    if self.emission.selected:
-      self.canvas_1.fill_style = "Black"
-    else:
+    canvas = self.canvas_1
+    canWidth  = canvas.get_width()
+    canLength = canvas.get_height()
+    canvas.fill_style = "Black"
+    canvas.fill_rect(0, 0, canWidth, canLength)
+    
+    if self.absorption.selected:
+      lineLength = canvas.get_width()/2
       for i in range(len(self.WvToRGB)):
-        self.canvas_1.fill_style = self.WvToRGB[i]
         wv = i + 380
-        self.canvas_1.begin_path()
-        self.canvas_1.move_to(0, 0)
-        self.canvas_1.line_to(canWidth, 0)
-        self.canvas_1.line_to(canWidth, canLength)
-        self.canvas_1.line_to(0, canLength
-        
-    self.canvas_1.fill()
+        canvas.begin_path()
+        canvas.move_to(lineLength, wv - 380)
+        canvas.line_to(canvas.get_width(), wv - 380)
+        canvas.stroke_style = self.WvToRGB[i]
+        canvas.line_width = 1
+        canvas.stroke()
+        canvas.close_path()
     
     if self.H_alpha.checked:
       Form1.displayLine(self, "H_alpha")

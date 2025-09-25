@@ -78,12 +78,23 @@ class Form1(Form1Template):
     canWidth  = self.canvas_1.get_width()
     canLength = self.canvas_1.get_height()
     self.canvas_1.begin_path()
-    self.canvas_1.move_to(0, 0)
+    self.canvas_1.move_to(canWidth/2, 0)
     self.canvas_1.line_to(canWidth, 0)
     self.canvas_1.line_to(canWidth, canLength)
-    self.canvas_1.line_to(0, canLength)
+    self.canvas_1.line_to(canwidth/2, canLength)
     self.canvas_1.close_path()
-    self.canvas_1.fill_style = "Black"
+    if self.emission.selected:
+      self.canvas_1.fill_style = "Black"
+    else:
+      for i in range(len(self.WvToRGB)):
+        self.canvas_1.fill_style = self.WvToRGB[i]
+        wv = i + 380
+        self.canvas_1.begin_path()
+        self.canvas_1.move_to(0, 0)
+        self.canvas_1.line_to(canWidth, 0)
+        self.canvas_1.line_to(canWidth, canLength)
+        self.canvas_1.line_to(0, canLength
+        
     self.canvas_1.fill()
     
     if self.H_alpha.checked:
@@ -105,4 +116,16 @@ class Form1(Form1Template):
     self.canvas_1_reset()
 
   def H_delta_change(self, **event_args):
+    self.canvas_1_reset()
+
+  def emission_clicked(self, **event_args):
+    self.canvas_1_reset()
+
+  def absorption_clicked(self, **event_args):
+    self.canvas_1_reset()
+
+  def frequency_clicked(self, **event_args):
+    self.canvas_1_reset()
+
+  def wavelength_clicked(self, **event_args):
     self.canvas_1_reset()

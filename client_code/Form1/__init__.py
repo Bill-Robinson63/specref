@@ -16,6 +16,47 @@ class Form1(Form1Template):
     self.spectralLines["H_beta"]  = [486, "#00EFFF"]
     self.spectralLines["H_gamma"] = [434, "#2800FF"]
     self.spectralLines["H_delta"] = [410, "#7E00DB"]
+  
+  def wavelength_to_rgb(self, wavelength):
+    wavelength = float(wavelength)
+    if wavelength >= 380 and wavelength <= 440:
+      attenuation = 0.3 + 0.7 * (wavelength - 380) / (440 - 380)
+      R = ((-(wavelength - 440) / (440 - 380)) * attenuation) ** 0.8
+      G = 0.0
+      B = (1.0 * attenuation) ** 0.8
+    elif wavelength >= 440 and wavelength <= 490:
+      R = 0.0
+      G = ((wavelength - 440) / (490 - 440)) ** 0.8
+      B = 1.0
+    elif wavelength >= 490 and wavelength <= 510:
+      R = 0.0
+      G = 1.0
+      B = (-(wavelength - 510) / (510 - 490)) ** 0.8
+    elif wavelength >= 510 and wavelength <= 580:
+      R = ((wavelength - 510) / (580 - 510)) ** 0.8
+      G = 1.0
+      B = 0.0
+    elif wavelength >= 580 and wavelength <= 645:
+      R = 1.0
+      G = (-(wavelength - 645) / (645 - 580)) ** 0.8
+      B = 0.0
+    elif wavelength >= 645 and wavelength <= 750:
+      attenuation = 0.3 + 0.7 * (750 - wavelength) / (750 - 645)
+      R = (1.0 * attenuation) ** 0.8
+      G = 0.0
+      B = 0.0
+    else:
+      R = 0.0
+      G = 0.0
+      B = 0.0
+    R *= 255
+    G *= 255
+    B *= 255
+    return (int(R), int(G), int(B))
+
+  def WvToRGB(self, wv):
+    dRed, dGreen, dBlue = self.wavelength_to_rgb(wv)
+    return "#" + hex(dRed)[2:] + hex(dGreen)[2:] + hex(dBlue)[2:]
 
   def displayLine(self, lineKey):
     canvas = self.canvas_1
@@ -24,7 +65,7 @@ class Form1(Form1Template):
     canvas.begin_path()
     canvas.move_to(0, line[0] - 380)
     canvas.line_to(lineLength, line[0] - 380)
-    canvas.stroke_style = line[1]
+    canvas.stroke_style = self.WvToRGB(line[0])
     canvas.line_width = 1
     canvas.stroke()
     canvas.close_path()

@@ -9,13 +9,13 @@ class Form1(Form1Template):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
     self.canvas_1.reset_context()
-    self.c_nm = 299792458 * 1e-9
+    self.c_nm = 299792458 * 1e9
     # Let's start off with Hα, Hβ, O_III, O_I, S_II, N_II which are said to be most common/prominent for ameture astronomers
     self.spectralLines = {}
-    self.spectralLines["H_alpha"] = [656, "#FF0000"]
-    self.spectralLines["H_beta"]  = [486, "#00EFFF"]
-    self.spectralLines["H_gamma"] = [434, "#2800FF"]
-    self.spectralLines["H_delta"] = [410, "#7E00DB"]
+    self.spectralLines["H_alpha"] = 656
+    self.spectralLines["H_beta"]  = 486
+    self.spectralLines["H_gamma"] = 434
+    self.spectralLines["H_delta"] = 410
   
   def wavelength_to_rgb(self, wavelength):
     wavelength = float(wavelength)
@@ -68,22 +68,19 @@ class Form1(Form1Template):
     ret = "#" + hRed + hGreen + hBlue
     return ret
 
-  def WvToF(self, wv):
-    return wv / self.c_nm
-
   def displayLine(self, lineKey):
     canvas = self.canvas_1
     lineLength = canvas.get_width()/2
-    line = self.spectralLines[lineKey]
+    wv = self.spectralLines[lineKey]
     canvas.begin_path()
-    canvas.move_to(lineLength, line[0] - 380)
-    canvas.line_to(canvas.get_width(), line[0] - 380)
-    canvas.stroke_style = self.WvToRGB(line[0])
+    canvas.move_to(lineLength, wv - 380)
+    canvas.line_to(canvas.get_width(), wv - 380)
+    canvas.stroke_style = self.WvToRGB(wv)
     canvas.line_width = 1
     canvas.stroke()
     canvas.close_path()
     canvas.fill_style = "#FFFFFF"
-    canvas.fill_text(str(line[0]), 2, line[0] - 380)
+    canvas.fill_text("λ=" + str(wv) + " nm  f=" + str(int((self.c_nm / wv) / 1e12)) + " Thz", 2, wv - 380)
 
   def canvas_1_reset(self, **event_args):
     """This method is called when the canvas is reset and cleared, such as when the window resizes, or the canvas is added to a form."""

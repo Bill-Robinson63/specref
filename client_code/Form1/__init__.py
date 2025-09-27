@@ -54,30 +54,44 @@ class Form1(Form1Template):
 
     # Let's start off with Hα, Hβ, O_III, O_I, S_II, N_II which are said to be most common/prominent for ameture astronomers
     self.spectralLines = {}
-    self.spectralLines["H_alpha"] = 656
-    self.spectralLines["H_beta"]  = 486
-    self.spectralLines["H_gamma"] = 434
-    self.spectralLines["H_delta"] = 410
+    self.spectralLines["Hα"] = [656]
+    self.spectralLines["Hβ"]  = [486]
+    self.spectralLines["Hγ"] = [434]
+    self.spectralLines["Hδ"] = [410]
+    self.spectralLines["OIII"] = [496, 501]
+    self.spectralLines["SII"] = [672]
 
   def displayLine(self, lineKey):
     canvas = self.canvas_1
     lineLength = canvas.get_width()/2
-    wv = self.spectralLines[lineKey]
-    canvas.begin_path()
-    canvas.move_to(lineLength, wv - 380)
-    canvas.line_to(canvas.get_width(), wv - 380)
-    if self.absorption.selected:
-      canvas.stroke_style = "Black"
-    else:
-      canvas.stroke_style = self.WvToRGB[wv - 380]
-    canvas.line_width = 1
-    canvas.stroke()
-    canvas.close_path()
-    canvas.fill_style = "#FFFFFF"
+    wvs = self.spectralLines[lineKey]
+    tag = lineKey
+    for wv in wvs:
+      tag += " "
+      canvas.begin_path()
+      canvas.move_to(lineLength, wv - 380)
+      canvas.line_to(canvas.get_width(), wv - 380)
+      if self.absorption.selected:
+        canvas.stroke_style = "Black"
+      else:
+        canvas.stroke_style = self.WvToRGB[wv - 380]
+      canvas.line_width = 1
+      canvas.stroke()
+      canvas.close_path()
+      if self.frequency.selected:
+        tag += str(int((self.c_nm / wv) / 1e12))
+      else:
+        tag += str(wv)
     if self.frequency.selected:
-      canvas.fill_text("   f = " + str(int((self.c_nm / wv) / 1e12)) + " THz", 2, wv - 380)
+      tag += "THz"
     else:
-      canvas.fill_text("   λ = " + str(wv) + " nm", 2, wv - 380)
+      tag += "nm"
+    canvas.fill_style = "#FFFFFF"
+    canvas.font = "11px consolas"
+    if self.frequency.selected:
+      canvas.fill_text(tag, 2, wv - 380)
+    else:
+      canvas.fill_text(tag, 2, wv - 380)
 
   def canvas_1_reset(self, **event_args):
     """This method is called when the canvas is reset and cleared, such as when the window resizes, or the canvas is added to a form."""
@@ -100,13 +114,17 @@ class Form1(Form1Template):
         canvas.close_path()
     
     if self.H_alpha.checked:
-      Form1.displayLine(self, "H_alpha")
+      Form1.displayLine(self, "Hα")
     if self.H_beta.checked:
-      Form1.displayLine(self, "H_beta")
+      Form1.displayLine(self, "Hβ")
     if self.H_gamma.checked:
-      Form1.displayLine(self, "H_gamma")
+      Form1.displayLine(self, "Hγ")
     if self.H_delta.checked:
-      Form1.displayLine(self, "H_delta")
+      Form1.displayLine(self, "Hδ")
+    if self.O_III.checked:
+      Form1.displayLine(self, "OIII")
+    if self.S_II.checked:
+      Form1.displayLine(self, "SII")
 
   def H_alpha_change(self, **event_args):
     self.canvas_1_reset()
@@ -130,4 +148,10 @@ class Form1(Form1Template):
     self.canvas_1_reset()
 
   def wavelength_clicked(self, **event_args):
+    self.canvas_1_reset()
+
+  def O_III_change(self, **event_args):
+    self.canvas_1_reset()
+
+  def S_II_change(self, **event_args):
     self.canvas_1_reset()

@@ -9,80 +9,66 @@ components:
   properties: {align: center, background: Orange, bold: true, font_size: 24, foreground: Black, text: Spectroscopy Reference}
   type: TextBox
 - components:
-  - layout_properties: {grid_position: 'JJQQNC,HAHSIP'}
-    name: canvas_1
-    properties: {background: Black, height: '400'}
-    type: Canvas
+  - event_bindings: {change: H_alpha_change}
+    layout_properties: {grid_position: 'DXUTJR,PBSMGO'}
+    name: H_alpha
+    properties: {align: left, font: consolas, spacing_above: none, spacing_below: none, text: Hα}
+    type: CheckBox
+  - event_bindings: {change: H_beta_change}
+    layout_properties: {grid_position: 'ONDKJL,PXMUNJ'}
+    name: H_beta
+    properties: {align: left, font: consolas, spacing_above: none, spacing_below: none, text: Hβ, underline: false}
+    type: CheckBox
+  - event_bindings: {change: H_gamma_change}
+    layout_properties: {grid_position: 'MELIRN,OXUZTF'}
+    name: H_gamma
+    properties: {align: left, font: consolas, spacing_above: none, spacing_below: none, text: Hγ}
+    type: CheckBox
+  - event_bindings: {change: H_delta_change}
+    layout_properties: {grid_position: 'PKMVAD,WYGKIE'}
+    name: H_delta
+    properties: {font: consolas, spacing_above: none, spacing_below: none, text: Hδ}
+    type: CheckBox
+  - event_bindings: {change: O_III_change}
+    layout_properties: {grid_position: 'AIAEEU,IUVTPI'}
+    name: O_III
+    properties: {font: consolas, spacing_above: none, spacing_below: none, text: O III}
+    type: CheckBox
+  - event_bindings: {change: S_II_change}
+    layout_properties: {grid_position: 'MWEBTD,GKDBRU'}
+    name: S_II
+    properties: {font: consolas, spacing_above: none, spacing_below: none, text: S II}
+    type: CheckBox
   layout_properties: {slot: left-nav}
   name: column_panel_1
   properties: {}
   type: ColumnPanel
 - components:
-  - event_bindings: {clicked: emission_clicked}
-    layout_properties: {grid_position: 'WAOFBV,NTZFKP HXKLXI,TCUGAG'}
-    name: emission
-    properties: {group_name: spec_type, selected: true, text: Emission}
-    type: RadioButton
+  - layout_properties: {grid_position: 'JXNRDA,VEOIML'}
+    name: canvas_1
+    properties: {background: Black, height: '400'}
+    type: Canvas
   - event_bindings: {clicked: absorption_clicked}
-    layout_properties: {grid_position: 'WAOFBV,NTZFKP HXKLXI,DJDSUJ'}
+    layout_properties: {grid_position: 'JXNRDA,HGEKBM OTCJWW,XYAVBR'}
     name: absorption
-    properties: {group_name: spec_type, text: Absorption}
+    properties: {group_name: spec_type, selected: true, text: Absorption}
+    type: RadioButton
+  - data_bindings: []
+    event_bindings: {clicked: emission_clicked}
+    layout_properties: {grid_position: 'JXNRDA,HGEKBM OTCJWW,RTLSWY'}
+    name: emission
+    properties: {border: '', group_name: spec_type, selected: false, text: Emission}
     type: RadioButton
   - event_bindings: {clicked: frequency_clicked}
-    layout_properties: {grid_position: 'WAOFBV,NTZFKP HXKLXI,HLHEKZ'}
+    layout_properties: {grid_position: 'JXNRDA,HGEKBM KODUVU,NZOCJK'}
     name: frequency
-    properties: {group_name: data_mode, text: Frequency}
+    properties: {group_name: data_mode, selected: true, text: Frequency}
     type: RadioButton
   - event_bindings: {clicked: wavelength_clicked}
-    layout_properties: {grid_position: 'WAOFBV,UHRMJB'}
+    layout_properties: {grid_position: 'JXNRDA,HGEKBM KODUVU,FHFGVA'}
     name: wavelength
-    properties: {group_name: data_mode, selected: true, text: Wavelength}
+    properties: {group_name: data_mode, selected: false, text: Wavelength}
     type: RadioButton
-  - data_bindings:
-    - {code: '', property: border, writeback: false}
-    layout_properties: {grid_position: 'KGBLFU,LOSBMX'}
-    name: text_box_2
-    properties: {background: White, enabled: true, font: consolas, spacing_above: medium, spacing_below: none, text: Hydrogen, underline: true}
-    type: TextBox
-  - event_bindings: {change: H_alpha_change}
-    layout_properties: {grid_position: 'LLJCMR,NYXAUN'}
-    name: H_alpha
-    properties: {align: left, font: consolas, spacing_above: none, spacing_below: medium, text: Hα}
-    type: CheckBox
-  - event_bindings: {change: H_beta_change}
-    layout_properties: {grid_position: 'LLJCMR,FDHNUA'}
-    name: H_beta
-    properties: {align: left, font: consolas, spacing_above: none, spacing_below: none, text: Hβ, underline: false}
-    type: CheckBox
-  - event_bindings: {change: H_gamma_change}
-    layout_properties: {grid_position: 'LLJCMR,JLIQZM'}
-    name: H_gamma
-    properties: {align: left, font: consolas, spacing_above: none, spacing_below: none, text: Hγ}
-    type: CheckBox
-  - event_bindings: {change: H_delta_change}
-    layout_properties: {grid_position: 'LLJCMR,KCYHIN'}
-    name: H_delta
-    properties: {font: consolas, spacing_above: none, spacing_below: medium, text: Hδ}
-    type: CheckBox
-  - event_bindings: {}
-    layout_properties: {grid_position: 'VOWJOX,FGKEOR'}
-    name: text_box_3
-    properties: {background: White, enabled: true, font: consolas, spacing_above: medium, spacing_below: none, text: Doubly Ionized Oxygen, underline: true}
-    type: TextBox
-  - event_bindings: {change: O_III_change}
-    layout_properties: {grid_position: 'DCTXTG,IGNXBK'}
-    name: O_III
-    properties: {font: consolas, spacing_above: none, spacing_below: medium, text: O III}
-    type: CheckBox
-  - layout_properties: {grid_position: 'XALZLQ,LFPUUC'}
-    name: text_box_4
-    properties: {background: White, font: consolas, spacing_above: medium, spacing_below: none, text: Singly Ionized Sulfur, underline: true}
-    type: TextBox
-  - event_bindings: {change: S_II_change}
-    layout_properties: {grid_position: 'CFUZLW,OFHAQS'}
-    name: S_II
-    properties: {font: consolas, spacing_above: none, spacing_below: medium, text: S II}
-    type: CheckBox
   layout_properties: {slot: default}
   name: column_panel_2
   properties: {background: White, foreground: Green, wrap_on: never}

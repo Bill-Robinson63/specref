@@ -29,10 +29,16 @@ components:
     name: H_delta
     properties: {font: consolas, spacing_above: none, spacing_below: none, text: Hδ}
     type: CheckBox
+  - data_bindings: []
+    event_bindings: {change: He_II_change}
+    layout_properties: {grid_position: 'ROFIJU,JIZVXF'}
+    name: He_II
+    properties: {font: Consolas, spacing_above: none, spacing_below: none, text: He II}
+    type: CheckBox
   - event_bindings: {change: O_III_change}
     layout_properties: {grid_position: 'AIAEEU,IUVTPI'}
     name: O_III
-    properties: {font: consolas, spacing_above: none, spacing_below: none, text: O III}
+    properties: {align: left, font: consolas, spacing_above: none, spacing_below: none, text: O III}
     type: CheckBox
   - event_bindings: {change: S_II_change}
     layout_properties: {grid_position: 'MWEBTD,GKDBRU'}

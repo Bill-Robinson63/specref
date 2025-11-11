@@ -58,6 +58,8 @@ class Form1(Form1Template):
     self.spectralLines["Hβ"]  = [486]
     self.spectralLines["Hγ"] = [434]
     self.spectralLines["Hδ"] = [410]
+    self.spectralLines["HeII"] = [454, 469, 541, 657]
+    self.spectralLines["NV"] = [461]
     self.spectralLines["OIII"] = [496, 501]
     self.spectralLines["SII"] = [672]
 
@@ -121,6 +123,8 @@ class Form1(Form1Template):
       Form1.displayLine(self, "Hγ")
     if self.H_delta.checked:
       Form1.displayLine(self, "Hδ")
+    if self.He_II.checked:
+      Form1.displayLine(self, "HeII")
     if self.O_III.checked:
       Form1.displayLine(self, "OIII")
     if self.S_II.checked:
@@ -148,6 +152,9 @@ class Form1(Form1Template):
     self.canvas_1_reset()
 
   def wavelength_clicked(self, **event_args):
+    self.canvas_1_reset()
+
+  def He_II_change(self, **event_args):
     self.canvas_1_reset()
 
   def O_III_change(self, **event_args):

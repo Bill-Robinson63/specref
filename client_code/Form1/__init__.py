@@ -58,7 +58,7 @@ class Form1(Form1Template):
     self.spectralLines["Hβ"]  = [486]
     self.spectralLines["Hγ"] = [434]
     self.spectralLines["Hδ"] = [410]
-    self.spectralLines["HeII"] = [454, 469, 541, 657]
+    self.spectralLines["HeII"] = [454, 469, 541] # 657 would interfere with H_alpha
     self.spectralLines["NV"] = [461]
     self.spectralLines["OIII"] = [496, 501]
     self.spectralLines["SII"] = [672]
@@ -68,6 +68,7 @@ class Form1(Form1Template):
     lineLength = canvas.get_width()/2
     wvs = self.spectralLines[lineKey]
     tag = lineKey
+    last_wv = 0
     for wv in wvs:
       tag += " "
       canvas.begin_path()
@@ -84,16 +85,16 @@ class Form1(Form1Template):
         tag += str(int((self.c_nm / wv) / 1e12))
       else:
         tag += str(wv)
-    if self.frequency.selected:
-      tag += "THz"
-    else:
-      tag += "nm"
-    canvas.fill_style = "#FFFFFF"
-    canvas.font = "11px consolas"
-    if self.frequency.selected:
-      canvas.fill_text(tag, 2, wv - 380)
-    else:
-      canvas.fill_text(tag, 2, wv - 380)
+      if wv - last_wv > 8:
+        if self.frequency.selected:
+          tag += "THz"
+        else:
+          tag += "nm"
+        canvas.fill_style = "#FFFFFF"
+        canvas.font = "11px consolas"
+        canvas.fill_text(tag, 2, wv - 380)
+        tag = lineKey
+      last_wv = wv
 
   def canvas_1_reset(self, **event_args):
     """This method is called when the canvas is reset and cleared, such as when the window resizes, or the canvas is added to a form."""
@@ -125,6 +126,8 @@ class Form1(Form1Template):
       Form1.displayLine(self, "Hδ")
     if self.He_II.checked:
       Form1.displayLine(self, "HeII")
+    if self.N_V.checked:
+      Form1.displayLine(self, "NV")
     if self.O_III.checked:
       Form1.displayLine(self, "OIII")
     if self.S_II.checked:
@@ -161,4 +164,7 @@ class Form1(Form1Template):
     self.canvas_1_reset()
 
   def S_II_change(self, **event_args):
+    self.canvas_1_reset()
+
+  def N_V_change(self, **event_args):
     self.canvas_1_reset()

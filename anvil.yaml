@@ -1,5 +1,8 @@
 allow_embedding: false
-dependencies: []
+dependencies:
+- dep_id: dep_xretk3gthlqty4
+  resolution_hints: {app_id: C6ZZPAPN4YYF5NVJ, name: Anvil Extras, package_name: anvil_extras}
+  version: {version_tag: v3.6.3}
 metadata: {description: A scientific exploration of our universe..., logo_img: 'asset:Moon_logo.JPEG', title: Spacelike Scientific}
 name: Spacelike
 package_name: Spacelike

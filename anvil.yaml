@@ -1,8 +1,8 @@
 allow_embedding: false
 dependencies: []
-metadata: {description: Absorption and Emission Lines At Rest and Redshiftes, title: Interactive Spectroscopic Reference}
-name: SpecRef
-package_name: SpecRef
+metadata: {description: A scientific exploration of our universe..., logo_img: 'asset:Moon_logo.JPEG', title: Spacelike Scientific}
+name: Spacelike
+package_name: Spacelike
 renamed: true
 runtime_options:
   client_version: '3'

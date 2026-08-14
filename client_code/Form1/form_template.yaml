@@ -1,50 +1,48 @@
 components:
-- components: []
-  data_bindings:
-  - {code: 'self.item['''']', property: text, writeback: false}
-  - {code: '', property: border, writeback: false}
-  - {code: '', property: wrap_on, writeback: false}
-  layout_properties: {slot: nav-right}
-  name: link_1
+- components:
+  - components: []
+    data_bindings:
+    - {code: '', property: text, writeback: false}
+    - {code: '', property: wrap_on, writeback: false}
+    layout_properties: {grid_position: 'JXNRDA,JQCEMH'}
+    name: link_1
+    properties:
+      align: center
+      background: Black
+      border: ''
+      foreground: '#FF5910'
+      icon_align: top
+      spacing:
+        margin: ['8', '0', null, null]
+        padding: [null, '8', null, '0']
+      spacing_above: small
+      text: Donate
+      url: https://buy.stripe.com/4gM9AS1xb5MEa6ucpZbbG00
+      visible: true
+    type: Link
+  layout_properties: {slot: default}
+  name: column_panel_1
   properties:
-    align: center
-    background: Black
-    border: ''
+    background: '#002D72'
     foreground: '#FF5910'
-    icon_align: left
     spacing:
-      margin: ['8', null, null, null]
-      padding: [null, '0', null, '0']
-    text: Donate
-    url: https://buy.stripe.com/4gM9AS1xb5MEa6ucpZbbG00
+      margin: ['0', null, null, null]
     visible: true
-  type: Link
+    wrap_on: mobile
+  type: ColumnPanel
 - data_bindings: []
   layout_properties: {slot: title}
-  name: text_box_1
-  properties:
-    align: center
-    background: '#002D72'
-    bold: true
-    font_size: 24
-    foreground: '#FF5910'
-    margin: [null, '4', null, '0']
-    text: Spacelike Scientific
-  type: TextBox
-- components: []
-  layout_properties: {slot: left-nav}
-  name: column_panel_1
-  properties: {background: '#002D72', foreground: '#FF5910'}
-  type: ColumnPanel
-- components:
-  - layout_properties: {grid_position: 'JXNRDA,VEOIML'}
-    name: canvas_1
-    properties: {background: Black, height: '400'}
-    type: Canvas
-  layout_properties: {slot: default}
-  name: column_panel_2
-  properties: {background: '#002D72', foreground: '#FF5910', wrap_on: never}
-  type: ColumnPanel
+  name: label_1
+  properties: {align: center, bold: true, font_size: 24, text: Spacelike Scientific}
+  type: Label
+- layout_properties: {slot: nav-right}
+  name: flow_panel_1
+  properties: {}
+  type: FlowPanel
+- layout_properties: {slot: left-nav}
+  name: grid_panel_1
+  properties: {}
+  type: GridPanel
 container:
   data_bindings:
   - {code: '', property: border, writeback: false}

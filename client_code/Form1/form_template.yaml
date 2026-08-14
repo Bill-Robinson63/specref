@@ -9,6 +9,11 @@ components:
     name: button_1
     properties: {background: '#FF5910', bold: true, font: '16', foreground: '# #002D72', text: Start}
     type: Button
+  - event_bindings: {tick: timer_1_tick}
+    layout_properties: {}
+    name: timer_1
+    properties: {interval: 0.01}
+    type: Timer
   - components: []
     layout_properties: {}
     name: link_1
@@ -20,6 +25,7 @@ components:
       icon_align: left
       spacing:
         margin: [null, '10', null, null]
+        padding: [null, '5', null, '5']
       text: Donate
       url: https://buy.stripe.com/4gM9AS1xb5MEa6ucpZbbG00
     type: Link
@@ -27,7 +33,8 @@ components:
   name: flow_panel_1
   properties: {background: ''}
   type: FlowPanel
-- layout_properties: {slot: left-nav}
+- event_bindings: {reset: canvas_1_reset}
+  layout_properties: {slot: left-nav}
   name: canvas_1
   properties: {background: '', height: 396.3999938964844}
   type: Canvas

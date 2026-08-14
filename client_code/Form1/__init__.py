@@ -13,6 +13,7 @@ class Form1(Form1Template):
     self.canvas_1.reset_context()
     self.star = [100, 100, 1, 2]
 
+  @handle("canvas_1", "reset")
   def canvas_1_reset(self, **event_args):
     """This method is called when the canvas is reset and cleared, such as when the window resizes, or the canvas is added to a form."""
     # Adjust these coordinates if you want the drawing area to not be centered

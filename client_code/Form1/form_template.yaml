@@ -29,7 +29,7 @@ components:
   type: FlowPanel
 - layout_properties: {slot: left-nav}
   name: canvas_1
-  properties: {background: '#000000', height: 396.3999938964844}
+  properties: {background: '', height: 396.3999938964844}
   type: Canvas
 container:
   data_bindings:

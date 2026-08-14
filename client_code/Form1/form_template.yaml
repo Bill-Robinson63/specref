@@ -1,90 +1,50 @@
 components:
 - components: []
+  data_bindings:
+  - {code: 'self.item['''']', property: text, writeback: false}
+  - {code: '', property: border, writeback: false}
   layout_properties: {slot: nav-right}
   name: link_1
-  properties: {align: center, background: Black, foreground: Blue, text: Donate, url: 'https://buy.stripe.com/4gM9AS1xb5MEa6ucpZbbG00'}
+  properties:
+    align: center
+    background: Black
+    border: ''
+    foreground: '#FF5910'
+    spacing:
+      margin: ['8', null, null, null]
+    text: Donate
+    url: https://buy.stripe.com/4gM9AS1xb5MEa6ucpZbbG00
   type: Link
-- layout_properties: {slot: title}
+- data_bindings: []
+  layout_properties: {slot: title}
   name: text_box_1
-  properties: {align: center, background: Orange, bold: true, font_size: 24, foreground: Black, text: Spectroscopy Reference}
+  properties:
+    align: center
+    background: '#002D72'
+    bold: true
+    font_size: 24
+    foreground: '#FF5910'
+    margin: [null, '4', null, '0']
+    text: Spacelike Scientific
   type: TextBox
-- components:
-  - event_bindings: {change: H_alpha_change}
-    layout_properties: {grid_position: 'DXUTJR,PBSMGO'}
-    name: H_alpha
-    properties: {align: left, font: consolas, spacing_above: none, spacing_below: none, text: Hα}
-    type: CheckBox
-  - event_bindings: {change: H_beta_change}
-    layout_properties: {grid_position: 'ONDKJL,PXMUNJ'}
-    name: H_beta
-    properties: {align: left, font: consolas, spacing_above: none, spacing_below: none, text: Hβ, underline: false}
-    type: CheckBox
-  - event_bindings: {change: H_gamma_change}
-    layout_properties: {grid_position: 'MELIRN,OXUZTF'}
-    name: H_gamma
-    properties: {align: left, font: consolas, spacing_above: none, spacing_below: none, text: Hγ}
-    type: CheckBox
-  - event_bindings: {change: H_delta_change}
-    layout_properties: {grid_position: 'PKMVAD,WYGKIE'}
-    name: H_delta
-    properties: {font: consolas, spacing_above: none, spacing_below: none, text: Hδ}
-    type: CheckBox
-  - data_bindings: []
-    event_bindings: {change: He_II_change}
-    layout_properties: {grid_position: 'ROFIJU,JIZVXF'}
-    name: He_II
-    properties: {font: Consolas, spacing_above: none, spacing_below: none, text: He II}
-    type: CheckBox
-  - event_bindings: {change: N_V_change}
-    layout_properties: {grid_position: 'LSNLQQ,QRPFGJ'}
-    name: N_V
-    properties: {font: Consolas, spacing_above: none, spacing_below: none, text: N V}
-    type: CheckBox
-  - event_bindings: {change: O_III_change}
-    layout_properties: {grid_position: 'AIAEEU,IUVTPI'}
-    name: O_III
-    properties: {align: left, font: consolas, spacing_above: none, spacing_below: none, text: O III}
-    type: CheckBox
-  - event_bindings: {change: S_II_change}
-    layout_properties: {grid_position: 'MWEBTD,GKDBRU'}
-    name: S_II
-    properties: {font: consolas, spacing_above: none, spacing_below: none, text: S II}
-    type: CheckBox
+- components: []
   layout_properties: {slot: left-nav}
   name: column_panel_1
-  properties: {}
+  properties: {background: '#002D72', foreground: '#FF5910'}
   type: ColumnPanel
 - components:
   - layout_properties: {grid_position: 'JXNRDA,VEOIML'}
     name: canvas_1
     properties: {background: Black, height: '400'}
     type: Canvas
-  - event_bindings: {clicked: absorption_clicked}
-    layout_properties: {grid_position: 'JXNRDA,HGEKBM OTCJWW,XYAVBR'}
-    name: absorption
-    properties: {group_name: spec_type, selected: true, text: Absorption}
-    type: RadioButton
-  - data_bindings: []
-    event_bindings: {clicked: emission_clicked}
-    layout_properties: {grid_position: 'JXNRDA,HGEKBM OTCJWW,RTLSWY'}
-    name: emission
-    properties: {border: '', group_name: spec_type, selected: false, text: Emission}
-    type: RadioButton
-  - event_bindings: {clicked: frequency_clicked}
-    layout_properties: {grid_position: 'JXNRDA,HGEKBM KODUVU,NZOCJK'}
-    name: frequency
-    properties: {group_name: data_mode, selected: true, text: Frequency}
-    type: RadioButton
-  - event_bindings: {clicked: wavelength_clicked}
-    layout_properties: {grid_position: 'JXNRDA,HGEKBM KODUVU,FHFGVA'}
-    name: wavelength
-    properties: {group_name: data_mode, selected: false, text: Wavelength}
-    type: RadioButton
   layout_properties: {slot: default}
   name: column_panel_2
-  properties: {background: White, foreground: Green, wrap_on: never}
+  properties: {background: '#002D72', foreground: '#FF5910', wrap_on: never}
   type: ColumnPanel
 container:
-  properties: {foreground: Blue, html: '@theme:standard-page.html', visible: true}
+  data_bindings:
+  - {code: '', property: border, writeback: false}
+  - {code: '', property: background, writeback: false}
+  properties: {background: '#002D72', border: '', foreground: '#FF5910', html: '@theme:standard-page.html', visible: true}
   type: HtmlTemplate
 is_package: true

@@ -4,8 +4,6 @@ import anvil.server
 import stripe.checkout
 from anvil_extras import animation 
 
-# Greek Letters: Α α, Β β, Γ γ, Δ δ, Ε ε, Ζ ζ, Η η, Θ θ, Ι ι, Κ κ, Λ λ, Μ μ, Ν ν, Ξ ξ, Ο ο, Π π, Ρ ρ, Σ σ ς, Τ τ, Υ υ, Φ φ, Χ χ, Ψ ψ, Ω ω
-
 class Form1(Form1Template):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
@@ -14,7 +12,6 @@ class Form1(Form1Template):
     self.canvas_1.height = self.canvas_size
     self.canvas_1.reset_context()
     self.star = [100, 100, 1, 2]
-
 
   def canvas_1_reset(self, **event_args):
     """This method is called when the canvas is reset and cleared, such as when the window resizes, or the canvas is added to a form."""

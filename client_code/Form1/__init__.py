@@ -15,112 +15,56 @@ class Form1(Form1Template):
     self.canvas_1.reset_context()
     self.star = [100, 100, 1, 2]
 
-  def displayLine(self, lineKey):
-    canvas = self.canvas_1
-    lineLength = canvas.get_width()/2
-    wvs = self.spectralLines[lineKey]
-    tag = lineKey
-    last_wv = 0
-    for wv in wvs:
-      tag += " "
-      canvas.begin_path()
-      canvas.move_to(lineLength, wv - 380)
-      canvas.line_to(canvas.get_width(), wv - 380)
-      if self.absorption.selected:
-        canvas.stroke_style = "Black"
-      else:
-        canvas.stroke_style = self.WvToRGB[wv - 380]
-      canvas.line_width = 1
-      canvas.stroke()
-      canvas.close_path()
-      if self.frequency.selected:
-        tag += str(int((self.c_nm / wv) / 1e12))
-      else:
-        tag += str(wv)
-      if wv - last_wv > 8:
-        if self.frequency.selected:
-          tag += "THz"
-        else:
-          tag += "nm"
-        canvas.fill_style = "#FFFFFF"
-        canvas.font = "11px consolas"
-        canvas.fill_text(tag, 2, wv - 380)
-        tag = lineKey
-      last_wv = wv
 
   def canvas_1_reset(self, **event_args):
     """This method is called when the canvas is reset and cleared, such as when the window resizes, or the canvas is added to a form."""
-    canvas = self.canvas_1
-    canWidth  = canvas.get_width()
-    canLength = canvas.get_height()
-    canvas.fill_style = "Black"
-    canvas.fill_rect(0, 0, canWidth, canLength)
-    
-    if self.absorption.selected:
-      lineLength = canvas.get_width()/2
-      for i in range(len(self.WvToRGB)):
-        wv = i + 380
-        canvas.begin_path()
-        canvas.move_to(lineLength, wv - 380)
-        canvas.line_to(canvas.get_width(), wv - 380)
-        canvas.stroke_style = self.WvToRGB[i]
-        canvas.line_width = 1
-        canvas.stroke()
-        canvas.close_path()
-    
-    if self.H_alpha.checked:
-      Form1.displayLine(self, "Hα")
-    if self.H_beta.checked:
-      Form1.displayLine(self, "Hβ")
-    if self.H_gamma.checked:
-      Form1.displayLine(self, "Hγ")
-    if self.H_delta.checked:
-      Form1.displayLine(self, "Hδ")
-    if self.He_II.checked:
-      Form1.displayLine(self, "HeII")
-    if self.N_V.checked:
-      Form1.displayLine(self, "NV")
-    if self.O_III.checked:
-      Form1.displayLine(self, "OIII")
-    if self.S_II.checked:
-      Form1.displayLine(self, "SII")
+    # Adjust these coordinates if you want the drawing area to not be centered
+    self.canvas_offset = (self.canvas_1.get_width() - self.canvas_size)/2
+    self.canvas_1.translate(self.canvas_offset, 0)
 
-  def H_alpha_change(self, **event_args):
-    self.canvas_1_reset()
+    # Restrict drawing to the section that we want visible
+    self.canvas_1.begin_path()
+    self.canvas_1.move_to(0, 0)
+    self.canvas_1.line_to(self.canvas_size, 0)
+    self.canvas_1.line_to(self.canvas_size, self.canvas_size)
+    self.canvas_1.line_to(0, self.canvas_size)
+    self.canvas_1.close_path()
+    self.canvas_1.fill_style = "Black"
+    self.canvas_1.fill()
+    self.canvas_1.clip()
 
-  def H_beta_change(self, **event_args):
-    self.canvas_1_reset()
+    """# Draw a square
+    self.canvas_1.begin_path()
+    self.canvas_1.move_to(100, 100)
+    self.canvas_1.line_to(150, 100)
+    self.canvas_1.line_to(150, 150)
+    self.canvas_1.line_to(100, 150)
+    self.canvas_1.close_path()
+    self.canvas_1.stroke()"""
 
-  def H_gamma_change(self, **event_args):
-    self.canvas_1_reset()
+    # Draw a star
+    self.canvas_1.begin_path()
+    self.canvas_1.arc(self.star[0], self.star[1], 2)
+    self.canvas_1.close_path()
+    self.canvas_1.fill_style = "White"
+    self.canvas_1.fill()
 
-  def H_delta_change(self, **event_args):
-    self.canvas_1_reset()
+  def timer_1_tick(self, **event_args):
+    """This method is called Every [interval] seconds. Does not trigger if [interval] is 0."""
+    self.star[0] += self.star[2]
+    self.star[1] += self.star[3]
+    if self.star[0] <= 0 or self.star[0] >= self.canvas_size:
+      self.star[2] = -self.star[2]
+    if self.star[1] <= 0 or self.star[1] >= self.canvas_size:
+      self.star[3] = -self.star[3]
 
-  def emission_clicked(self, **event_args):
-    self.canvas_1_reset()
-
-  def absorption_clicked(self, **event_args):
-    self.canvas_1_reset()
-
-  def frequency_clicked(self, **event_args):
-    self.canvas_1_reset()
-
-  def wavelength_clicked(self, **event_args):
-    self.canvas_1_reset()
-
-  def He_II_change(self, **event_args):
-    self.canvas_1_reset()
-
-  def O_III_change(self, **event_args):
-    self.canvas_1_reset()
-
-  def S_II_change(self, **event_args):
-    self.canvas_1_reset()
-
-  def N_V_change(self, **event_args):
-    self.canvas_1_reset()
-
+    self.canvas_1.begin_path()
+    self.canvas_1.arc(self.star[0], self.star[1], 2)
+    self.canvas_1.close_path()
+    self.canvas_1.fill_style = "White"
+    self.canvas_1.fill()
+    self.canvas_1.reset_context()
+  
   @handle("link_1", "click")
   def link_1_click(self, **event_args):
     """This method is called when the link is clicked"""

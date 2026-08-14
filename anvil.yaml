@@ -18,4 +18,5 @@ services:
     publishable_key: {live: 'https://buy.stripe.com/4gM9AS1xb5MEa6ucpZbbG00', test: 'https://buy.stripe.com/4gM9AS1xb5MEa6ucpZbbG00'}
   server_config: {refresh_token: rt_T3uxUPy0QIeJWcgvNocwoPEquNzSAMMVk6OB9rGOS2QGnN0P, stripe_user_id: acct_1S5WoPA9UohVpebu}
   source: /runtime/services/stripe.yml
-startup_form: Form1
+startup: {module: Form0, type: form}
+startup_form: null

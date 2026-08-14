@@ -1,11 +1,11 @@
-from ._anvil_designer import Form1Template
+from ._anvil_designer import Form0Template
 from anvil import *
 import anvil.server
 import stripe.checkout
 
 # Greek Letters: Α α, Β β, Γ γ, Δ δ, Ε ε, Ζ ζ, Η η, Θ θ, Ι ι, Κ κ, Λ λ, Μ μ, Ν ν, Ξ ξ, Ο ο, Π π, Ρ ρ, Σ σ ς, Τ τ, Υ υ, Φ φ, Χ χ, Ψ ψ, Ω ω
 
-class Form1(Form1Template):
+class Form0(Form0Template):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
@@ -169,3 +169,8 @@ class Form1(Form1Template):
 
   def N_V_change(self, **event_args):
     self.canvas_1_reset()
+
+  @handle("link_1", "click")
+  def link_1_click(self, **event_args):
+    """This method is called when the link is clicked"""
+    pass  # Write Code Here

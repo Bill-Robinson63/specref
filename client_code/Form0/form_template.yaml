@@ -2,7 +2,7 @@ components:
 - components:
   - components: []
     data_bindings:
-    - {code: '', property: text, writeback: false}
+    - {code: Donate, property: text, writeback: false}
     - {code: '', property: wrap_on, writeback: false}
     layout_properties: {grid_position: 'JXNRDA,JQCEMH'}
     name: link_1
@@ -10,8 +10,10 @@ components:
       align: center
       background: Black
       border: ''
+      col_spacing: none
       foreground: '#FF5910'
-      icon_align: top
+      icon_align: right_edge
+      role: body
       spacing:
         margin: ['8', '0', null, null]
         padding: [null, '8', null, '0']

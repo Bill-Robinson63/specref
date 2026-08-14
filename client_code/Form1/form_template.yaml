@@ -12,6 +12,7 @@ components:
     foreground: '#FF5910'
     spacing:
       margin: ['8', null, null, null]
+      padding: [null, '0', null, '0']
     text: Donate
     url: https://buy.stripe.com/4gM9AS1xb5MEa6ucpZbbG00
   type: Link

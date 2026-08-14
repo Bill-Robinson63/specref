@@ -2,7 +2,7 @@ components:
 - components:
   - components: []
     data_bindings:
-    - {code: Donate, property: text, writeback: false}
+    - {code: '', property: text, writeback: false}
     - {code: '', property: wrap_on, writeback: false}
     layout_properties: {grid_position: 'JXNRDA,JQCEMH'}
     name: link_1

@@ -8,9 +8,9 @@ class Form1(Form1Template):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
-    self.canvas_size = 500
+    self.canvas_size = 600
     self.canvas_1.height = self.canvas_size
-    self.star = [100, 100, 1, 2]
+    self.star = [300, 300, 1, 2]
     self.canvas_1.reset_context()
 
   def canvas_1_reset(self, **event_args):

@@ -3,6 +3,7 @@ components:
   data_bindings:
   - {code: 'self.item['''']', property: text, writeback: false}
   - {code: '', property: border, writeback: false}
+  - {code: '', property: wrap_on, writeback: false}
   layout_properties: {slot: nav-right}
   name: link_1
   properties:
@@ -10,11 +11,13 @@ components:
     background: Black
     border: ''
     foreground: '#FF5910'
+    icon_align: left
     spacing:
       margin: ['8', null, null, null]
       padding: [null, '0', null, '0']
     text: Donate
     url: https://buy.stripe.com/4gM9AS1xb5MEa6ucpZbbG00
+    visible: true
   type: Link
 - data_bindings: []
   layout_properties: {slot: title}

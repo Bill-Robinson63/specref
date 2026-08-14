@@ -5,34 +5,32 @@ components:
   properties: {align: center, bold: true, font_size: 24, text: Spacelike Scientific}
   type: Label
 - components:
-  - components:
-    - name: button_1
-      properties: {text: button_1}
-      type: Button
-    - components: []
-      name: link_1
-      properties:
-        align: center
-        bold: true
-        foreground: '#FF5910'
-        icon_align: left
-        spacing:
-          margin: [null, '10', null, null]
-        text: Donate
-        url: https://buy.stripe.com/4gM9AS1xb5MEa6ucpZbbG00
-      type: Link
+  - layout_properties: {}
+    name: button_1
+    properties: {background: '#FF5910', bold: true, font: '16', foreground: '# #002D72', text: Start}
+    type: Button
+  - components: []
     layout_properties: {}
-    name: linear_panel_1
-    properties: {}
-    type: LinearPanel
-  - layout_properties: {width: 759.1999816894531}
-    name: canvas_1
-    properties: {height: 272.5999755859375}
-    type: Canvas
+    name: link_1
+    properties:
+      align: center
+      bold: false
+      font_size: 12
+      foreground: '#FF5910'
+      icon_align: left
+      spacing:
+        margin: [null, '10', null, null]
+      text: Donate
+      url: https://buy.stripe.com/4gM9AS1xb5MEa6ucpZbbG00
+    type: Link
   layout_properties: {slot: nav-right}
   name: flow_panel_1
-  properties: {}
+  properties: {background: ''}
   type: FlowPanel
+- layout_properties: {slot: left-nav}
+  name: canvas_1
+  properties: {background: '#000000', height: 396.3999938964844}
+  type: Canvas
 container:
   data_bindings:
   - {code: '', property: border, writeback: false}

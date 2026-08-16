@@ -7,7 +7,13 @@ components:
 - components:
   - layout_properties: {}
     name: button_1
-    properties: {background: '#FF5910', bold: true, font: '16', foreground: '# #002D72', text: Start}
+    properties:
+      background: '#FF5910'
+      bold: true
+      font: '16'
+      foreground: '# #002D72'
+      text: |
+        Curvature
     type: Button
   - event_bindings: {tick: timer_1_tick}
     layout_properties: {}

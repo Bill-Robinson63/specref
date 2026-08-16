@@ -15,11 +15,6 @@ components:
       text: |
         Curvature
     type: Button
-  - event_bindings: {tick: timer_1_tick}
-    layout_properties: {}
-    name: timer_1
-    properties: {interval: 0.01}
-    type: Timer
   - components: []
     layout_properties: {}
     name: link_1
@@ -39,10 +34,15 @@ components:
   name: flow_panel_1
   properties: {background: ''}
   type: FlowPanel
-- event_bindings: {reset: canvas_1_reset}
+- event_bindings: {}
   layout_properties: {slot: left-nav}
   name: canvas_1
-  properties: {background: '', height: 396.3999938964844}
+  properties:
+    background: ''
+    height: '400'
+    margin: ['0', null, '0', null]
+    spacing_above: none
+    spacing_below: none
   type: Canvas
 container:
   data_bindings:

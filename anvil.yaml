@@ -1,4 +1,5 @@
 allow_embedding: false
+db_schema: {}
 dependencies:
 - dep_id: dep_xretk3gthlqty4
   resolution_hints: {app_id: C6ZZPAPN4YYF5NVJ, name: Anvil Extras, package_name: anvil_extras}

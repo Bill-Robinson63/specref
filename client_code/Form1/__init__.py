@@ -32,7 +32,7 @@ class Form1(Form1Template):
         x = int(centerX + (u * size) / 3)
         y = int(centerY + (3 / (v * size)))
         c.fill_style = "white"
-        c.fill_r(x,y,2)
+        c.fill_rect(x,y,2)
 
   @handle("canvas_1", "reset")
   def canvas_1_reset(self, **event_args):

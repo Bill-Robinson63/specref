@@ -1,6 +1,7 @@
 from ._anvil_designer import Form1Template
 from anvil import *
 import stripe.checkout
+import math
 
 class Form1(Form1Template):
   def __init__(self, **properties):
@@ -26,11 +27,12 @@ class Form1(Form1Template):
     # vertical space lines
     for s in range(-3, 3):
       for t in range(-3, 3, int(size/2)):
-        u = (s+t)/2
-        v = (s-t)/2
-        x = centerX + (3 / (u * size))
-        y = centerY + v * size / 3
-        c.fill_rect(x,y,1,1,"blue")
+        u = (math.atan(t+s) - math.atan(t-s)) / 2
+        v = (math.atan(t+s) + math.atan(t-s)) / 2
+        x = int(centerX + (u * size) / 3)
+        y = int(centerY + (3 / (v * size)))
+        c.fill_style = "white"
+        c.fill_r(x,y,2)
 
   @handle("canvas_1", "reset")
   def canvas_1_reset(self, **event_args):

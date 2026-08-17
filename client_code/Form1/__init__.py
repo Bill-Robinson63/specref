@@ -23,11 +23,14 @@ class Form1(Form1Template):
     c.fill()
     c.stroke()
 
-    # time lines
-    #for t in range(0, 2*size, size/3):
-      #for s in range(centerX - size, centerX + size):
-        # u = 
-        # c.fill_rect(s, t, 1, 1, "magenta")
+    # vertical space lines
+    for s in range(-3, 3):
+      for t in range(-3, 3, int(size/2)):
+        u = (s+t)/2
+        v = (s-t)/2
+        x = centerX + (3 / (u * size))
+        y = centerY + v * size / 3
+        c.fill_rect(x,y,1,1,"blue")
 
   @handle("canvas_1", "reset")
   def canvas_1_reset(self, **event_args):
@@ -37,7 +40,7 @@ class Form1(Form1Template):
       canSize = c.get_width()
     else:
       canSize = c.get_height()
-    canMid = c.get_width() / 2
+    canMid = int(c.get_width() / 2)
     self.Penrose_Grid(canMid, int(canSize/2), int(canSize/2))
     
   @handle("link_1", "click")

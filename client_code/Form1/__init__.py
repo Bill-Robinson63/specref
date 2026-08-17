@@ -24,15 +24,16 @@ class Form1(Form1Template):
     c.fill()
     c.stroke()
 
-    # vertical space lines
-    for s in range(-3, 3):
-      for t in range(-3, 3, int(size/2)):
-        u = (math.atan(t+s) - math.atan(t-s)) / 2
-        v = (math.atan(t+s) + math.atan(t-s)) / 2
-        x = int(centerX + (u * size) / 3)
-        y = int(centerY + (3 / (v * size)))
-        c.fill_style = "white"
-        c.fill_rect(x,y,2)
+    lines = [-5, -2, -1, -.5, 0, .5, 1, 2, 5]
+    # vertical constant space lines
+    for s in lines:
+      for t in range(-20, 20):
+        x = (math.atan(t+s) - math.atan(t-s)) * 67
+        y = (math.atan(t+s) + math.atan(t-s)) * 67
+        x += centerX
+        y += 200
+      c.fill_style = "white"
+      c.fill_rect(x,y,2,2)
 
   @handle("canvas_1", "reset")
   def canvas_1_reset(self, **event_args):

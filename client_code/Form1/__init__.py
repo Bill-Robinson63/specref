@@ -19,7 +19,7 @@ class Form1(Form1Template):
     c = self.canvas_1
     c.line_width = 3
     c.stroke_style = self.Mets_orange
-    c.fill_style = "black"
+    c.fill_style = self.Jets_Stealth_Black
     c.begin_path()
     c.move_to(centerX, 0)
     c.line_to(centerX + size, size)
@@ -37,10 +37,10 @@ class Form1(Form1Template):
     # vertical constant space lines
     for s in lines:
       c.begin_path()
-      for T in range(-150, 150):
+      for T in range(-200, 201):
         t = T/10
-        x = (math.atan(t+s) - math.atan(t-s)) * 67
-        y = (math.atan(t+s) + math.atan(t-s)) * 67
+        x = (math.atan(t+s) - math.atan(t-s)) * 65
+        y = (math.atan(t+s) + math.atan(t-s)) * 65
         x += centerX
         y *= -1
         y += size
@@ -48,16 +48,15 @@ class Form1(Form1Template):
           c.move_to(x,y)
         else:
           c.line_to(x,y)
-      c.close_path()
       c.stroke()
     #
     # horizontal constant time lines
     for t in lines:
       c.begin_path()
-      for S in range(-195, 195):
+      for S in range(-200, 201):
         s = S/10
-        x = (math.atan(t+s) - math.atan(t-s)) * 67
-        y = (math.atan(t+s) + math.atan(t-s)) * 67
+        x = (math.atan(t+s) - math.atan(t-s)) * 65
+        y = (math.atan(t+s) + math.atan(t-s)) * 6
         x += centerX
         y *= -1
         y += size
@@ -65,7 +64,6 @@ class Form1(Form1Template):
           c.move_to(x,y)
         else:
           c.line_to(x,y)
-      c.close_path()
       c.stroke()
       
     # eyes

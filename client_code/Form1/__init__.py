@@ -9,6 +9,9 @@ class Form1(Form1Template):
     self.init_components(**properties)
     self.Mets_blue   = "#002D72"
     self.Mets_orange = "#FF5910"
+    self.Jets_Gotham_Green = "#125740"
+    self.Jets_Stealth_Black = "#000000"
+    self.Jets_Spotlight_White = "#FFFFFF"
 
   def Penrose_Grid(self, centerX, centerY, size):
     c = self.canvas_1
@@ -25,15 +28,77 @@ class Form1(Form1Template):
     c.stroke()
 
     lines = [-5, -2, -1, -.5, 0, .5, 1, 2, 5]
+    
     # vertical constant space lines
     for s in lines:
-      for t in range(-20, 20):
+      c.begin_path()
+      for T in range(-200, 200):
+        t = T/10
         x = (math.atan(t+s) - math.atan(t-s)) * 67
         y = (math.atan(t+s) + math.atan(t-s)) * 67
         x += centerX
-        y += 200
-      c.fill_style = "white"
-      c.fill_rect(x,y,2,2)
+        y *= -1
+        y += size
+        if t == -20:
+          c.move_to(x,y)
+        else:
+          c.line_to(x,y)
+      c.close_path()
+      c.stroke_style = self.Jets_Spotlight_White
+      c.line_width = 1
+      c.stroke()
+
+    # horizontal constant time lines
+    t = -.5
+    c.begin_path()
+    for S in range(-5, 5):
+      s = S/10
+      x = (math.atan(t+s) - math.atan(t-s)) * 67
+      y = (math.atan(t+s) + math.atan(t-s)) * 67
+      x += centerX
+      y *= -1
+      y += size
+      if s == -20:
+        c.move_to(x,y)
+      else:
+        c.line_to(x,y)
+    c.close_path()
+    c.stroke_style = "magenta"
+    c.line_width = 5
+    c.stroke()
+
+    # eyes
+    c.stroke_style = "cyan"
+    c.fill_style = "cyan"
+    c.begin_path()
+    c.arc(centerX-80, 150, 5, 0, 2 * 3.14159)
+    c.close_path()
+    c.stroke()
+    c.fill()
+    c.begin_path()
+    c.arc(centerX+80, 150, 5, 0, 2 * 3.14159)
+    c.close_path()
+    c.stroke()
+    c.fill()
+    
+    # mouth
+    for t in lines:
+      c.begin_path()
+      for S in range(-200, 200):
+        s = S/10
+        x = (math.atan(t+s) - math.atan(t-s)) * 67
+        y = (math.atan(t+s) + math.atan(t-s)) * 67
+        x += centerX
+        y *= -1
+        y += size
+        if s == -20:
+          c.move_to(x,y)
+        else:
+          c.line_to(x,y)
+      c.close_path()
+      c.stroke_style = self.Jets_Spotlight_White
+      c.line_width = 1
+      c.stroke()
 
   @handle("canvas_1", "reset")
   def canvas_1_reset(self, **event_args):
@@ -56,6 +121,3 @@ class Form1(Form1Template):
     """This method is called when the button is clicked"""
     pass
     #open_form("")
-
-  
-

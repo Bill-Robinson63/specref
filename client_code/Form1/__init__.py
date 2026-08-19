@@ -12,8 +12,10 @@ class Form1(Form1Template):
     self.Jets_Gotham_Green = "#125740"
     self.Jets_Stealth_Black = "#000000"
     self.Jets_Spotlight_White = "#FFFFFF"
+    self.pi = 3.14159
 
   def Penrose_Grid(self, centerX, centerY, size):
+    # border & background
     c = self.canvas_1
     c.line_width = 3
     c.stroke_style = self.Mets_orange
@@ -27,12 +29,15 @@ class Form1(Form1Template):
     c.fill()
     c.stroke()
 
-    lines = [-5, -2, -1, -.5, 0, .5, 1, 2, 5]
-    
+    # grid lines
+    lines = [-4, -2, -1, -.5, 0, .5, 1, 2, 4]
+    c.stroke_style = self.Jets_Spotlight_White
+    c.line_width = 1
+    #
     # vertical constant space lines
     for s in lines:
       c.begin_path()
-      for T in range(-200, 200):
+      for T in range(-150, 150):
         t = T/10
         x = (math.atan(t+s) - math.atan(t-s)) * 67
         y = (math.atan(t+s) + math.atan(t-s)) * 67
@@ -44,47 +49,12 @@ class Form1(Form1Template):
         else:
           c.line_to(x,y)
       c.close_path()
-      c.stroke_style = self.Jets_Spotlight_White
-      c.line_width = 1
       c.stroke()
-
+    #
     # horizontal constant time lines
-    t = -.5
-    c.begin_path()
-    for S in range(-5, 5):
-      s = S/10
-      x = (math.atan(t+s) - math.atan(t-s)) * 67
-      y = (math.atan(t+s) + math.atan(t-s)) * 67
-      x += centerX
-      y *= -1
-      y += size
-      if s == -20:
-        c.move_to(x,y)
-      else:
-        c.line_to(x,y)
-    c.close_path()
-    c.stroke_style = "magenta"
-    c.line_width = 5
-    c.stroke()
-
-    # eyes
-    c.stroke_style = "cyan"
-    c.fill_style = "cyan"
-    c.begin_path()
-    c.arc(centerX-80, 150, 5, 0, 2 * 3.14159)
-    c.close_path()
-    c.stroke()
-    c.fill()
-    c.begin_path()
-    c.arc(centerX+80, 150, 5, 0, 2 * 3.14159)
-    c.close_path()
-    c.stroke()
-    c.fill()
-    
-    # mouth
     for t in lines:
       c.begin_path()
-      for S in range(-200, 200):
+      for S in range(-195, 195):
         s = S/10
         x = (math.atan(t+s) - math.atan(t-s)) * 67
         y = (math.atan(t+s) + math.atan(t-s)) * 67
@@ -96,9 +66,40 @@ class Form1(Form1Template):
         else:
           c.line_to(x,y)
       c.close_path()
-      c.stroke_style = self.Jets_Spotlight_White
-      c.line_width = 1
       c.stroke()
+      
+    # eyes
+    c.stroke_style = "cyan"
+    c.fill_style = "cyan"
+    c.begin_path()
+    c.arc(centerX-80, 150, 5, 0, 2 * self.pi)
+    c.close_path()
+    c.stroke()
+    c.fill()
+    c.begin_path()
+    c.arc(centerX+80, 150, 5, 0, 2 * self.pi)
+    c.close_path()
+    c.stroke()
+    c.fill()
+    
+    # mouth
+    t = -.5
+    c.begin_path()
+    for S in range(-10, 11):
+      s = S/10
+      x = (math.atan(t+s) - math.atan(t-s)) * 67
+      y = (math.atan(t+s) + math.atan(t-s)) * 67
+      x += centerX
+      y *= -1
+      y += size
+      if s == -20:
+        c.move_to(x,y)
+      else:
+        c.line_to(x,y)
+    #c.close_path()
+    c.stroke_style = "magenta"
+    c.line_width = 10
+    c.stroke()
 
   @handle("canvas_1", "reset")
   def canvas_1_reset(self, **event_args):

@@ -1,5 +1,23 @@
 allow_embedding: false
-db_schema: {}
+db_schema:
+  spectrum:
+    client: none
+    columns:
+    - admin_ui: {order: 0, width: 200}
+      client_hidden: false
+      name: Frequency
+      type: number
+    - admin_ui: {order: 1, width: 200}
+      client_hidden: false
+      name: Wavelength
+      type: number
+    - admin_ui: {order: 2, width: 200}
+      client_hidden: false
+      name: Hex_color_code
+      type: string
+    indexes: []
+    server: full
+    title: Spectrum
 dependencies:
 - dep_id: dep_xretk3gthlqty4
   resolution_hints: {app_id: C6ZZPAPN4YYF5NVJ, name: Anvil Extras, package_name: anvil_extras}

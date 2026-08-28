@@ -70,12 +70,12 @@ class Form1(Form1Template):
     c.stroke_style = "cyan"
     c.fill_style = "cyan"
     c.begin_path()
-    c.arc(centerX-80, 150, 5, 0, 2 * self.pi)
+    c.arc(centerX-80, 153, 5, 0, 2 * self.pi)
     c.close_path()
     c.stroke()
     c.fill()
     c.begin_path()
-    c.arc(centerX+80, 150, 5, 0, 2 * self.pi)
+    c.arc(centerX+80, 153, 5, 0, 2 * self.pi)
     c.close_path()
     c.stroke()
     c.fill()

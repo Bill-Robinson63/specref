@@ -118,8 +118,7 @@ class Form1(Form1Template):
     """This method is called when the link is clicked"""
     pass  # Write Code Here
 
-  @handle("button_1", "click")
-  def button_1_click(self, **event_args):
+  @handle("button_specref", "click")
+  def button_specref_click(self, **event_args):
     """This method is called when the button is clicked"""
-    pass
-    #open_form("")
+    open_form("SpecRef")

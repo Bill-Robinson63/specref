@@ -6,14 +6,15 @@ components:
   type: Label
 - components:
   - layout_properties: {}
-    name: button_1
+    name: button_specref
     properties:
       background: '#FF5910'
       bold: true
       font: '16'
       foreground: '# #002D72'
       text: |
-        Curvature
+        Spec Ref
+      tooltip: Amateur Astronomy Spectral Reference
     type: Button
   - components: []
     layout_properties: {}
@@ -43,6 +44,7 @@ components:
     margin: ['0', null, '0', null]
     spacing_above: none
     spacing_below: none
+    tooltip: Amateur Astronomy Spectral Reference
   type: Canvas
 container:
   data_bindings:

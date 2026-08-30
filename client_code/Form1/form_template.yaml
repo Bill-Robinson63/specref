@@ -44,7 +44,7 @@ components:
     margin: ['0', null, '0', null]
     spacing_above: none
     spacing_below: none
-    tooltip: Amateur Astronomy Spectral Reference
+    tooltip: ''
   type: Canvas
 container:
   data_bindings:

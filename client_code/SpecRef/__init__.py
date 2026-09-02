@@ -104,7 +104,8 @@ class SpecRef(SpecRefTemplate):
       canvas.close_path()
         
       if wv in (461, 496, 657):
-        if wv == 46
+        if wv == 461:
+          wvAlt = 625
       
       if self.frequency.selected:
         tag += str(int((self.c_nm / wv) / 1e12))

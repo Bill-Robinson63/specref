@@ -84,24 +84,25 @@ class SpecRef(SpecRefTemplate):
 
   def displayLine(self, lineKey):
     canvas = self.canvas_1
-    canWidth = canvas.get
-    lineStart = canvas.get_width() * self.tagPx[linekey] * canvas.
+    canWidth = canvas.get_width()
+    tagX = self.tagPx[lineKey]
+    lineStart = canWidth * .7
     wvs = self.spectralLines[lineKey]
     tag = lineKey
-    tagX = self.tagPx[lineKey]
     last_wv = 0
     for wv in wvs:
       tag += " "
       canvas.begin_path()
       canvas.move_to(lineStart, wv - 380)
-      canvas.line_to(canvas.get_width(), wv - 380)
+      canvas.line_to(canWidth, wv - 380)
       if self.absorption.selected:
         canvas.stroke_style = "Black"
       else:
         canvas.stroke_style = self.WvToRGB[wv - 380]
       canvas.line_width = 1
       canvas.stroke()
-      canvas.close_path()
+      canvas.close_path() 461:
+      
       if self.frequency.selected:
         tag += str(int((self.c_nm / wv) / 1e12))
       else:
@@ -113,7 +114,7 @@ class SpecRef(SpecRefTemplate):
           tag += "nm"
         canvas.fill_style = "#FFFFFF"
         canvas.font = "14px consolas"
-        canvas.fill_text(tag, tagX * canvas.get_width(), wv - 380)
+        canvas.fill_text(tag, tagX * canWidth, wv - 380)
         tag = lineKey
       last_wv = wv
 

@@ -67,21 +67,32 @@ class SpecRef(SpecRefTemplate):
     self.spectralLines["Hβ"]  = [486]
     self.spectralLines["Hγ"] = [434]
     self.spectralLines["Hδ"] = [410]
-    self.spectralLines["HeII"] = [454, 469, 541] # 657 would interfere with H_alpha
+    self.spectralLines["HeII"] = [454, 469, 541, 657]
     self.spectralLines["NV"] = [461]
     self.spectralLines["OIII"] = [496, 501]
     self.spectralLines["SII"] = [672]
 
+    self.tagPx = {}
+    self.tagPx["Hα"] = .01
+    self.tagPx["Hβ"]  = .01
+    self.tagPx["Hγ"] = .01
+    self.tagPx["Hδ"] = .01
+    self.tagPx["HeII"] = .21
+    self.tagPx["NV"] = .41
+    self.tagPx["OIII"] = .41
+    self.tagPx["SII"] = .41
+
   def displayLine(self, lineKey):
     canvas = self.canvas_1
-    lineLength = canvas.get_width()/2
+    lineStart = canvas.get_width() * .8
     wvs = self.spectralLines[lineKey]
     tag = lineKey
+    tagX = self.tagPx[lineKey]
     last_wv = 0
     for wv in wvs:
       tag += " "
       canvas.begin_path()
-      canvas.move_to(lineLength, wv - 380)
+      canvas.move_to(lineStart, wv - 380)
       canvas.line_to(canvas.get_width(), wv - 380)
       if self.absorption.selected:
         canvas.stroke_style = "Black"
@@ -100,8 +111,8 @@ class SpecRef(SpecRefTemplate):
         else:
           tag += "nm"
         canvas.fill_style = "#FFFFFF"
-        canvas.font = "11px consolas"
-        canvas.fill_text(tag, 2, wv - 380)
+        canvas.font = "14px consolas"
+        canvas.fill_text(tag, tagX * canvas.get_width(), wv - 380)
         tag = lineKey
       last_wv = wv
 
@@ -114,11 +125,11 @@ class SpecRef(SpecRefTemplate):
     canvas.fill_rect(0, 0, canWidth, canLength)
 
     if self.absorption.selected:
-      lineLength = canvas.get_width()/2
+      lineStart = canvas.get_width() * .8
       for i in range(len(self.WvToRGB)):
         wv = i + 380
         canvas.begin_path()
-        canvas.move_to(lineLength, wv - 380)
+        canvas.move_to(lineStart, wv - 380)
         canvas.line_to(canvas.get_width(), wv - 380)
         canvas.stroke_style = self.WvToRGB[i]
         canvas.line_width = 1

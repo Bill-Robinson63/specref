@@ -101,7 +101,9 @@ class SpecRef(SpecRefTemplate):
         canvas.stroke_style = self.WvToRGB[wv - 380]
       canvas.line_width = 1
       canvas.stroke()
-      canvas.close_path() 461:
+      canvas.close_path()
+        
+      if wv in (461, )
       
       if self.frequency.selected:
         tag += str(int((self.c_nm / wv) / 1e12))

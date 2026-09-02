@@ -73,18 +73,19 @@ class SpecRef(SpecRefTemplate):
     self.spectralLines["SII"] = [672]
 
     self.tagPx = {}
-    self.tagPx["Hα"] = .01
-    self.tagPx["Hβ"]  = .01
-    self.tagPx["Hγ"] = .01
-    self.tagPx["Hδ"] = .01
+    self.tagPx["Hα"] = .41
+    self.tagPx["Hβ"]  = .41
+    self.tagPx["Hγ"] = .41
+    self.tagPx["Hδ"] = .41
     self.tagPx["HeII"] = .21
-    self.tagPx["NV"] = .41
-    self.tagPx["OIII"] = .41
-    self.tagPx["SII"] = .41
+    self.tagPx["NV"] = .01
+    self.tagPx["OIII"] = .01
+    self.tagPx["SII"] = .01
 
   def displayLine(self, lineKey):
     canvas = self.canvas_1
-    lineStart = canvas.get_width() * .8
+    canWidth = canvas.get
+    lineStart = canvas.get_width() * self.tagPx[linekey] * canvas.
     wvs = self.spectralLines[lineKey]
     tag = lineKey
     tagX = self.tagPx[lineKey]
@@ -138,7 +139,6 @@ class SpecRef(SpecRefTemplate):
 
     if self.H_alpha.checked:
       SpecRef.displayLine(self, "Hα")
-      
     if self.H_beta.checked:
       SpecRef.displayLine(self, "Hβ")
     if self.H_gamma.checked:

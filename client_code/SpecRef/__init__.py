@@ -73,20 +73,20 @@ class SpecRef(SpecRefTemplate):
     self.spectralLines["SII"] = [672]
 
     self.tagPx = {}
-    self.tagPx["Hα"] = .41
-    self.tagPx["Hβ"]  = .41
-    self.tagPx["Hγ"] = .41
-    self.tagPx["Hδ"] = .41
+    self.tagPx["Hα"] = .01
+    self.tagPx["Hβ"]  = .01
+    self.tagPx["Hγ"] = .01
+    self.tagPx["Hδ"] = .01
     self.tagPx["HeII"] = .21
-    self.tagPx["NV"] = .01
-    self.tagPx["OIII"] = .01
-    self.tagPx["SII"] = .01
+    self.tagPx["NV"] = .41
+    self.tagPx["OIII"] = .41
+    self.tagPx["SII"] = .41
 
   def displayLine(self, lineKey):
     canvas = self.canvas_1
     canWidth = canvas.get_width()
     tagX = self.tagPx[lineKey]
-    lineStart = canWidth * .7
+    lineStart = canWidth * .8
     wvs = self.spectralLines[lineKey]
     tag = lineKey
     last_wv = 0
@@ -102,26 +102,47 @@ class SpecRef(SpecRefTemplate):
       canvas.line_width = 1
       canvas.stroke()
       canvas.close_path()
-        
-      if wv in (461, 496, 657):
-        if wv == 461:
-          wvAlt = 625
-          elif:
+
+      canvas.begin_path()
+      canvas.move_to(lineStart, wv - 380)
+      if wv == 656:
+        canvas.line_to(canWidth * .7, wv - 380)
+        canvas.line_to(canWidth * .7, 625 - 380)
+        canvas.line_to(canWidth * (tagX + .1), 625 - 380)
+        canvas.line_to(canWidth * (tagX + .1), wv - 380)
+      if wv == 454:
+        canvas.line_to(canWidth * .7, wv - 380)
+        canvas.line_to(canWidth * .7, 445 - 380)
+        canvas.line_to(canWidth * (tagX + .1), 445 - 380)
+        canvas.line_to(canWidth * (tagX + .1), wv - 380)
+      canvas.line_to(canWidth * (tagX + .065), wv - 380)
+      if self.absorption.selected:
+        canvas.stroke_style = "White"
+      else:
+        canvas.stroke_style = self.WvToRGB[wv - 380]
+      canvas.line_width = 1
+      canvas.stroke()
+      canvas.close_path()
       
       if self.frequency.selected:
         tag += str(int((self.c_nm / wv) / 1e12))
       else:
         tag += str(wv)
-      if wv - last_wv > 8:
-        if self.frequency.selected:
-          tag += "THz"
-        else:
-          tag += "nm"
-        canvas.fill_style = "#FFFFFF"
-        canvas.font = "14px consolas"
-        canvas.fill_text(tag, tagX * canWidth, wv - 380)
-        tag = lineKey
-      last_wv = wv
+      if self.frequency.selected:
+        tag += "THz"
+      else:
+        tag += "nm"
+      canvas.fill_style = "#FFFFFF"
+      canvas.font = "14px consolas"
+      if wv == 501:
+        canvas.fill_text(tag, tagX * canWidth, wv - 370)
+      elif wv in (656, 486, 434, 410):
+        canvas.fill_text(tag, tagX * canWidth + 11, wv - 377)
+      elif wv in (461, 672):
+        canvas.fill_text(tag, tagX * canWidth + 5, wv - 377)
+      else:
+        canvas.fill_text(tag, tagX * canWidth, wv - 377)
+      tag = lineKey
 
   def canvas_1_reset(self, **event_args):
     """This method is called when the canvas is reset and cleared, such as when the window resizes, or the canvas is added to a form."""

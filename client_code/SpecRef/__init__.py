@@ -106,6 +106,7 @@ class SpecRef(SpecRefTemplate):
       if wv in (461, 496, 657):
         if wv == 461:
           wvAlt = 625
+          elif:
       
       if self.frequency.selected:
         tag += str(int((self.c_nm / wv) / 1e12))

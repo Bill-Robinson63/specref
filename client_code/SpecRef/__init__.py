@@ -138,6 +138,7 @@ class SpecRef(SpecRefTemplate):
 
     if self.H_alpha.checked:
       SpecRef.displayLine(self, "Hα")
+      
     if self.H_beta.checked:
       SpecRef.displayLine(self, "Hβ")
     if self.H_gamma.checked:

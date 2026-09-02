@@ -1,9 +1,9 @@
 <anvil-form container="HtmlTemplate" prop:html="@theme:standard-page.html" prop:background="#002D72" prop:foreground="#FF5910">
   <anvil-component type="Label" name="label_1" prop:text="Spacelike Amateur Astronomy Spectroscopic Reference
-      " prop:align="center" prop:bold="true" prop:font_size="24" container:slot="title"></anvil-component>
+    " prop:align="center" prop:bold="true" prop:font_size="24" container:slot="title"></anvil-component>
   <anvil-component type="FlowPanel" name="flow_panel_1" container:slot="nav-right">
     <anvil-component type="anvil_extras.RadioGroup" name="radio_group_1">
-      <anvil-component type="RadioButton" name="frequency" prop:text="Frequency" prop:bold="true" prop:selected="true"></anvil-component>
+      <anvil-component type="RadioButton" name="frequency" prop:text="Frequency" prop:bold="true" prop:selected="true" prop:spacing='{"margin":[null,null,null,"10"]}'></anvil-component>
       <anvil-component type="RadioButton" name="wavelength" prop:text="Wavelength" prop:bold="true"></anvil-component>
     </anvil-component>
     <anvil-component type="anvil_extras.RadioGroup" name="radio_group_2">
@@ -15,16 +15,15 @@
   </anvil-component>
   <anvil-component type="FlowPanel" name="flow_panel_2" prop:background="#125740" prop:foreground="#FFFFFF" container:slot="left-nav">
     <anvil-component type="ColumnPanel" name="column_panel_1">
-      <anvil-component type="CheckBox" name="H_alpha" prop:text="Hα" prop:bold="true" container:grid_position="PWZBIF,XSAAOL"></anvil-component>
-      <anvil-component type="CheckBox" name="H_beta" prop:text="Hβ" prop:bold="true" container:grid_position="SMBDUY,KVUKKK"></anvil-component>
-      <anvil-component type="CheckBox" name="H_gamma" prop:text="Hγ" prop:bold="true" container:grid_position="HGCYQL,CHOYXE"></anvil-component>
-      <anvil-component type="CheckBox" name="H_delta" prop:text="Hδ" prop:bold="true" container:grid_position="ZODQXG,LKPWUJ"></anvil-component>
-      <anvil-component type="CheckBox" name="He_II" prop:text="He II" prop:bold="true" container:grid_position="VTMCGS,THMMXC"></anvil-component>
-      <anvil-component type="CheckBox" name="N_V" prop:text="N V" prop:bold="true" container:grid_position="ATSBEF,PQHMRU"></anvil-component>
-      <anvil-component type="CheckBox" name="O_III" prop:text="O III" prop:bold="true" container:grid_position="SBRAFH,UWCFPF"></anvil-component>
-      <anvil-component type="CheckBox" name="S_II" prop:text="S II" prop:bold="true" container:grid_position="TXSXNE,KTPSXO"></anvil-component>
+      <anvil-component type="CheckBox" name="H_alpha" prop:text="Hα" prop:bold="true" prop:spacing='{"margin":[null,null,null,"10"]}' container:grid_position="PWZBIF,XSAAOL"></anvil-component>
+      <anvil-component type="CheckBox" name="H_beta" prop:text="Hβ" prop:bold="true" prop:spacing='{"margin":[null,null,null,"10"]}' container:grid_position="SMBDUY,KVUKKK"></anvil-component>
+      <anvil-component type="CheckBox" name="H_gamma" prop:text="Hγ" prop:bold="true" prop:spacing='{"margin":[null,null,null,"10"]}' container:grid_position="HGCYQL,CHOYXE"></anvil-component>
+      <anvil-component type="CheckBox" name="H_delta" prop:text="Hδ" prop:bold="true" prop:spacing='{"margin":[null,null,null,"10"]}' container:grid_position="ZODQXG,LKPWUJ"></anvil-component>
+      <anvil-component type="CheckBox" name="He_II" prop:text="He II" prop:bold="true" prop:spacing='{"margin":[null,null,null,"10"]}' container:grid_position="VTMCGS,THMMXC"></anvil-component>
+      <anvil-component type="CheckBox" name="N_V" prop:text="N V" prop:bold="true" prop:spacing='{"margin":[null,null,null,"10"]}' container:grid_position="ATSBEF,PQHMRU"></anvil-component>
+      <anvil-component type="CheckBox" name="O_III" prop:text="O III" prop:bold="true" prop:spacing='{"margin":[null,null,null,"10"]}' container:grid_position="SBRAFH,UWCFPF"></anvil-component>
+      <anvil-component type="CheckBox" name="S_II" prop:text="S II" prop:bold="true" prop:spacing='{"margin":[null,null,null,"10"]}' container:grid_position="TXSXNE,KTPSXO"></anvil-component>
     </anvil-component>
-    <anvil-component type="Canvas" name="canvas_1" prop:height='"400"' prop:background="#000000" container:expand="true" container:width="400"></anvil-component>
-    <anvil-component type="ColumnPanel" name="column_panel_2" container:width="300"></anvil-component>
+    <anvil-component type="Canvas" name="canvas_1" prop:height='"400"' prop:background="#000000" container:expand="true"></anvil-component>
   </anvil-component>
 </anvil-form>
